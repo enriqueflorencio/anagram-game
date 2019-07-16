@@ -51,8 +51,24 @@ class ViewController: UIViewController {
         
         //Add constraints to all of our elements through one method
         NSLayoutConstraint.activate([
+            //The score label should be adjusted a few spaces away from the edge of the top right screen
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)])
+            scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            
+            //The top of the clues label should be set equal to the bottom of the score label
+            cluesLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
+            //The leading edge of the clue label should be pinned to the leading edge of the layout margins
+            cluesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 100),
+            //Set the width of the clue label equal to 60% of our view except subtract 100
+            cluesLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.6, constant: -100),
+            
+            //Do the same for the answer label
+            answersLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
+            answersLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -100),
+            answersLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4, constant: -100),
+            answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor)
+            ])
+        
     }
 
 
