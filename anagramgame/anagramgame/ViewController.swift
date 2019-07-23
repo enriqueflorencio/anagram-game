@@ -5,7 +5,7 @@
 //  Created by Enrique Florencio on 7/16/19.
 //  Copyright © 2019 Enrique Florencio. All rights reserved.
 //
-//  Testing outdated repository
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         cluesLabel.font = UIFont.systemFont(ofSize: 24)
         cluesLabel.text = "CLUES"
         cluesLabel.numberOfLines = 0
+        cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         view.addSubview(cluesLabel)
         
         //Answer label setup
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
         answersLabel.text = "ANSWERS"
         answersLabel.numberOfLines = 0
         answersLabel.textAlignment = .right
+        answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         view.addSubview(answersLabel)
         
         //UI Text Field setup
@@ -118,9 +120,36 @@ class ViewController: UIViewController {
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
             ])
         
-        cluesLabel.backgroundColor = .red
-        answersLabel.backgroundColor = .blue
-        buttonsView.backgroundColor = .green
+        //The width and height of our buttons
+        let width = 150
+        let height = 80
+        
+        //Creating a 4x5 grid for our 20 buttons
+        for row in 0..<4 {
+            for col in 0..<5 {
+                //Make a new button and give it a big font size
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+                
+                //Give the button some text just for testing
+                letterButton.setTitle("AAA", for: .normal)
+                
+                //Calculate the frame of this button using its column and row
+                let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
+                letterButton.frame = frame
+                
+                //Add it to the buttons view
+                buttonsView.addSubview(letterButton)
+                
+                //Add it to the buttons array
+                letterButtons.append(letterButton)
+                
+            }
+        }
+        
+//        cluesLabel.backgroundColor = .red
+//        answersLabel.backgroundColor = .blue
+//        buttonsView.backgroundColor = .green
     }
 
 
