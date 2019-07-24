@@ -25,11 +25,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadLevel()
     }
     
     
     @objc func letterTapped(_ sender: UIButton) {
-        
+        guard let buttonTitle = sender.titleLabel?.text else {return}
+        currentAnswer.text = currentAnswer.text?.appending(buttonTitle)
+        activatedButtons.append(sender)
+        sender.isHidden = true
     }
     
     @objc func submitTapped(_ sender: UIButton) {
@@ -37,7 +41,13 @@ class ViewController: UIViewController {
     }
     
     @objc func clearTapped(_ sender: UIButton) {
+        currentAnswer.text = ""
         
+        for button in activatedButtons {
+            button.isHidden = false
+        }
+        
+        activatedButtons.removeAll()
     }
     
     func loadLevel() {
@@ -45,18 +55,23 @@ class ViewController: UIViewController {
         var solutionString = ""
         var letterBits = [String]()
         
+        //Verify that the text file exists
         if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: "txt") {
+            //Verify that we can make strings out of the text file
             if let levelContents = try? String(contentsOf: levelFileURL) {
+                //These lines consist of words and clues
                 var lines = levelContents.components(separatedBy: "\n")
+                //We want to shuffle the words and clues around so that we keep the game interesting
                 lines.shuffle()
                 
+                //We want to loop through the lines so that we get the items and the position its in
                 for(index, line) in lines.enumerated() {
                     let parts = line.components(separatedBy: ": ")
                     let answer = parts[0]
                     let clue = parts[1]
                     clueString += "\(index + 1). \(clue)\n"
                     let solutionWord = answer.replacingOccurrences(of: "|", with: "")
-                    solutionString += "\(solutionWord.count) letters"
+                    solutionString += "\(solutionWord.count) letters\n"
                     solutions.append(solutionWord)
                     let bits = answer.components(separatedBy: "|")
                     letterBits += bits
@@ -64,7 +79,21 @@ class ViewController: UIViewController {
             }
         }
         
-        //Configure the buttons and labels 
+        
+        //Setup the clues and answers label.
+        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+        answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        //Shuffle the letters around
+        letterBits.shuffle()
+        
+        //If the amount of split up words are equal to the amount of buttons we have then insert the letter bits inside of the buttons
+        if(letterBits.count == letterButtons.count) {
+            for i in 0..<letterButtons.count {
+                letterButtons[i].setTitle(letterBits[i], for: .normal)
+            }
+        }
+        
     }
     
     override func loadView() {
@@ -196,9 +225,9 @@ class ViewController: UIViewController {
             }
         }
         
-//        cluesLabel.backgroundColor = .red
-//        answersLabel.backgroundColor = .blue
-//        buttonsView.backgroundColor = .green
+        //cluesLabel.backgroundColor = .red
+        //answersLabel.backgroundColor = .blue
+        //buttonsView.backgroundColor = .green
     }
 
 
