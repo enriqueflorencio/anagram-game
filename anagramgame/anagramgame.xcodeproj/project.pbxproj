@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF22678B22E7A74F00CDFDC0 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF22678A22E7A74F00CDFDC0 /* level1.txt */; };
+		CF95E0B6235D84D200ABD332 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF95E0B5235D84D100ABD332 /* level2.txt */; };
 		CFD750B522DE66B200FF900E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD750B422DE66B200FF900E /* AppDelegate.swift */; };
 		CFD750B722DE66B200FF900E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD750B622DE66B200FF900E /* ViewController.swift */; };
 		CFD750BA22DE66B200FF900E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD750B822DE66B200FF900E /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		CF22678A22E7A74F00CDFDC0 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		CF95E0B5235D84D100ABD332 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 		CFD750B122DE66B200FF900E /* anagramgame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = anagramgame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD750B422DE66B200FF900E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFD750B622DE66B200FF900E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 				CFD750B322DE66B200FF900E /* anagramgame */,
 				CFD750B222DE66B200FF900E /* Products */,
 				CF22678A22E7A74F00CDFDC0 /* level1.txt */,
+				CF95E0B5235D84D100ABD332 /* level2.txt */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF95E0B6235D84D200ABD332 /* level2.txt in Resources */,
 				CFD750BF22DE66B300FF900E /* LaunchScreen.storyboard in Resources */,
 				CF22678B22E7A74F00CDFDC0 /* level1.txt in Resources */,
 				CFD750BC22DE66B300FF900E /* Assets.xcassets in Resources */,
